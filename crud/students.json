@@ -1,0 +1,26 @@
+[
+    {
+        "name": "장동건",
+        "korean": 50,
+        "math": 95,
+        "social": 100,
+        "science": 85,
+        "english": 70
+    },
+    {
+        "name": "김태희",
+        "korean": 70,
+        "math": 85,
+        "social": 95,
+        "science": 100,
+        "english": 80
+    },
+    {
+        "name": "정우성",
+        "korean": 100,
+        "math": 80,
+        "social": 70,
+        "science": 55,
+        "english": 100
+    }
+]

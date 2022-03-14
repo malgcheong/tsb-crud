@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <title>성적표 테이블</title>
+    </head>
+    <body>
+        <h2>성적표</h2><br><hr>
+        <h3>추가</h3>
+        <div>
+            <form method="post" action="http://localhost:4000/add">
+                <label>이름: </label><input type ="text" name ="name"><br>
+                <label>국어: </label><input type ="text" name ="korean"><br>
+                <label>수학: </label><input type ="text" name ="math"><br>
+                <label>사회: </label><input type ="text" name ="social"><br>
+                <label>과학: </label><input type ="text" name ="science"><br>
+                <label>영어: </label><input type ="text" name ="english"><br>
+                <input type="submit" value="Submit"><br><br>
+            </form><hr>
+        </div>
+        <h3>수정</h3>
+        <form method="post" action="http://localhost:4000/modify">
+            <div id = "modify"></div>
+            <div>
+                <label>변경과목: </label><select name = "subject">
+                    <option value = "korean">국어</option>
+                    <option value = "math">수학</option>
+                    <option value = "social">사회</option>
+                    <option value = "science">과학</option>
+                    <option value = "english">영어</option>
+                </select><br>
+                <label>변경점수: </label><input type = "text" name = "score">
+            <input type="submit" value="Submit">
+            </div>
+        </form>
+        <hr>
+        <h3>삭제</h3>
+        <form method="get" action="http://localhost:4000/delete">
+            <div id = "delete"></div>
+            <input type="submit" value="Submit">
+        </form>
+        <hr>
+        <h3>출력</h3>
+        <div id="content"></div><hr>
+
+        <!-- 출력 -->
+        <script>
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://localhost:4000/students');
+            xhr.send();
+
+            xhr.onreadystatechange = function ()
+            {
+                if (xhr.readyState !== XMLHttpRequest.DONE) return;
+                
+                if(xhr.status === 200)
+                {
+                    let allText = JSON.parse(xhr.responseText);
+                    let deleteContent = '<label>삭제학생: </label><br>';
+                    let modifyContent = '<label>변경학생: </label><select name = "name">';
+                    let Content = '<table border = "10"><th>이름</th><th>국어</th><th>수학</th><th>사회</th><th>과학</th><th>영어</th>';
+                    allText.forEach(student => {
+                        deleteContent += `<input type="checkbox" name = "name" value= ${student.name}>${student.name}<br>`
+                        modifyContent += `<option value = ${student.name}>${student.name}</option>`
+                        Content+= 
+                        `<tr>
+                            <td>${student.name}</td>
+                            <td>${student.korean}</td>
+                            <td>${student.math}</td>
+                            <td>${student.social}</td>
+                            <td>${student.science}</td>
+                            <td>${student.english}</td>
+                        </tr>`
+                    });
+                    modifyContent+= '</select>';
+                    Content+='</talbe>';
+                    document.getElementById('content').innerHTML = Content;
+                    document.getElementById('modify').innerHTML = modifyContent;
+                    document.getElementById('delete').innerHTML = deleteContent;
+
+                }
+            }
+        </script>
+    
+    </body>
+</html>

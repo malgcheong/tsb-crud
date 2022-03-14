@@ -1,0 +1,28 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "description": "<a href=\"https://www.packtpub.com/web-development/learn-blockchain-programming-javascript?utm_source=github&utm_medium=repository&utm_campaign=9781789618822\"><img src=\"https://www.packtpub.com/sites/default/files/B12086.png\" alt=\"Learn Blockchain Programming with JavaScript\" height=\"256px\" align=\"right\"></a>",
+  "main": "",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "sha256": "^0.2.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "node_1": "nodemon --watch dev -e js dev/networkNode.js 3001 http://164.125.121.192:3001",
+    "node_2": "nodemon --watch dev -e js dev/networkNode.js 3002 http://164.125.121.192:3002",
+    "node_3": "nodemon --watch dev -e js dev/networkNode.js 3003 http://164.125.121.192:3003",
+    "node_4": "nodemon --watch dev -e js dev/networkNode.js 3004 http://164.125.121.192:3004",
+    "node_5": "nodemon --watch dev -e js dev/networkNode.js 3005 http://164.125.121.192:3005"
+  },
+  "author": "",
+  "license": "ISC"
+}
